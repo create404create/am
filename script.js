@@ -1,5 +1,3 @@
-// script.js
-
 const tcpaApi = "https://api.uspeoplesearch.net/tcpa/v1?x=";
 const personApi = "https://api.uspeoplesearch.net/person/v3?x=";
 const premiumLookupApi = "https://premium_lookup-1-h4761841.deta.app/person?x=";
@@ -45,11 +43,18 @@ async function lookupPhone(phone) {
   if (!phone) return;
   try {
     results.classList.add("hidden");
-    const [tcpaRes, personRes, premiumRes] = await Promise.all([
+
+    // Safe API calls with fallback if premium fails
+    let tcpaRes = {}, personRes = {}, premiumRes = {};
+    [tcpaRes, personRes] = await Promise.all([
       fetch(tcpaApi + phone).then(r => r.json()),
-      fetch(personApi + phone).then(r => r.json()),
-      fetch(premiumLookupApi + phone).then(r => r.json())
+      fetch(personApi + phone).then(r => r.json())
     ]);
+    try {
+      premiumRes = await fetch(premiumLookupApi + phone).then(r => r.json());
+    } catch (e) {
+      console.warn("Premium API failed:", e.message);
+    }
 
     setText("phone", phone);
     setText("state", tcpaRes.state);
