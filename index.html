@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Phone Number Lookup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📱 Phone Number Lookup</h1>
+      <button id="darkModeToggle">🌙 Toggle Dark Mode</button>
+    </header>
+
+    <div class="input-group">
+      <input type="text" id="phoneInput" placeholder="Enter phone number..." />
+      <button id="lookupBtn">Lookup</button>
+    </div>
+
+    <div class="actions">
+      <button id="copyBtn">Copy Info</button>
+      <button id="shareBtn">Share</button>
+    </div>
+
+    <div id="results" class="results hidden">
+      <h2>Lookup Result</h2>
+      <table>
+        <tbody>
+          <tr><td>Phone:</td><td id="phone"></td></tr>
+          <tr><td>State:</td><td id="state"></td></tr>
+          <tr><td>DNC National:</td><td id="dnc_national"></td></tr>
+          <tr><td>DNC State:</td><td id="dnc_state"></td></tr>
+          <tr><td>Litigator:</td><td id="litigator"></td></tr>
+          <tr><td>Blacklist:</td><td id="blacklist"></td></tr>
+          <tr><td>Person Name:</td><td id="name"></td></tr>
+          <tr><td>Address:</td><td id="address"></td></tr>
+          <tr><td>City:</td><td id="city"></td></tr>
+          <tr><td>State:</td><td id="person_state"></td></tr>
+          <tr><td>ZIP:</td><td id="zip"></td></tr>
+          <tr><td>Age:</td><td id="age"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="recent">
+      <h3>Recent Searches</h3>
+      <ul id="recentList"></ul>
+    </div>
+
+    <footer>
+      Created by <a href="skype:live:.cid.6a4827c093354752?chat">Ehtisham</a>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
